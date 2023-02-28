@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 
 import './Weather.css';
+import LocationMap from '../LocationMap/LocationMap';
 
 const API_URL = process.env.REACT_APP_MY_API_URL;
 console.log('API_URL: ', API_URL);
@@ -12,6 +13,7 @@ function Weather() {
   const [latitude, setLatitude] = useState('');
   const [longitude, setLongitute] = useState('');
   const [status, setStatus] = useState('idle');
+  const locationNotProvided = latitude === '' || longitude === '';
 
   useEffect(() => {
     if ('geolocation' in navigator) {
@@ -26,7 +28,7 @@ function Weather() {
 
   useEffect(() => {
     setError(null);
-    if (latitude === '' || longitude === '') {
+    if (locationNotProvided) {
       return;
     }
 
@@ -37,7 +39,6 @@ function Weather() {
         response = await axios.get(
           API_URL + 'lat=' + latitude + '&lon=' + longitude
         );
-        console.log('response: ', response);
         setCurrentWeather(response.data);
         setStatus('idle');
       } catch (error) {
@@ -69,7 +70,7 @@ function Weather() {
             <h1>Weather App</h1>
           </div>
           <div className='weather-input'>
-            <div>
+            <div className='weather-input-wrapper'>
               <label>
                 Latitude:{' '}
                 <input
@@ -82,7 +83,7 @@ function Weather() {
                 />
               </label>
             </div>
-            <div>
+            <div className='weather-input-wrapper'>
               <label>
                 Longitude:{' '}
                 <input
@@ -101,7 +102,9 @@ function Weather() {
             <div>Loading...</div>
           ) : (
             <div className='weather-body'>
-              <div className='weather-icon'></div>
+              <div className='weather-icon'>
+                <img src='/logo192.png' alt='logo' />
+              </div>
               <div className='weather-details'>
                 <h2>{temperature || 0}°C</h2>
                 <p>{onlyDate}</p>
@@ -111,6 +114,7 @@ function Weather() {
           )}
         </div>
       </div>
+      {!locationNotProvided && <LocationMap lat={latitude} lng={longitude} />}
     </>
   );
 }

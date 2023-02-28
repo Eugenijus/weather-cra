@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  background: linear-gradient(to bottom, #d9fffb, #80d3cc);
+  height: 100%;
 }
 
 .App-header {
