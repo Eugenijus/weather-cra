@@ -1,12 +1,11 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { format } from 'date-fns';
 import './Weather.css';
 
 function App() {
   const [currentWeather, setCurrentWeather] = useState({});
-  const [latitude, setLatitude] = useState(0);
-  const [longitude, setLongitute] = useState(0);
+  const [latitude, setLatitude] = useState('');
+  const [longitude, setLongitute] = useState('');
 
   useEffect(() => {
     if ('geolocation' in navigator) {
@@ -20,6 +19,9 @@ function App() {
   }, []);
 
   useEffect(() => {
+    if (latitude === '' || longitude === '') {
+      return;
+    }
     axios
       .get(
         'http://localhost:8080/weather?' +
@@ -44,7 +46,7 @@ function App() {
     setLongitute(value);
   };
 
-  const { temperature = 0.0, time = '', weatherText = '' } = currentWeather;
+  const { temperature = '', time = '', weatherText = '' } = currentWeather;
   const onlyDate = time.split('T')[0];
   return (
     <div className='weather-app-container'>
@@ -83,10 +85,9 @@ function App() {
         <div className='weather-body'>
           <div className='weather-icon'></div>
           <div className='weather-details'>
-            {/* <h2>Vilnius</h2> */}
             <h2>{temperature || 0}°C</h2>
-            <p>Day: {onlyDate}</p>
-            <p>Weather: {weatherText}</p>
+            <p>{onlyDate}</p>
+            <p>{weatherText}</p>
           </div>
         </div>
       </div>

@@ -19,6 +19,7 @@
 
 .weather-header {
   margin-bottom: 20px;
+  text-align: center;
 }
 
 .weather-header h1 {
