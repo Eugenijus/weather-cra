@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import Map from './Map';
+
 import './Weather.css';
 
 function App() {
@@ -49,49 +51,52 @@ function App() {
   const { temperature = '', time = '', weatherText = '' } = currentWeather;
   const onlyDate = time.split('T')[0];
   return (
-    <div className='weather-app-container'>
-      <div className='weather-app'>
-        <div className='weather-header'>
-          <h1>Weather App</h1>
-        </div>
-        <div className='weather-input'>
-          <div>
-            <label>
-              Latitude:{' '}
-              <input
-                value={latitude}
-                onChange={handleLatitudeChange}
-                min='-90'
-                max='90'
-                size='15'
-                type='number'
-              />
-            </label>
+    <>
+      <Map position={[latitude, longitude]} />
+      <div className='weather-app-container'>
+        <div className='weather-app'>
+          <div className='weather-header'>
+            <h1>Weather App</h1>
           </div>
-          <div>
-            <label>
-              Longitude:{' '}
-              <input
-                value={longitude}
-                onChange={handleLongitudeChange}
-                min='-180'
-                max='180'
-                size='15'
-                type='number'
-              />
-            </label>
+          <div className='weather-input'>
+            <div>
+              <label>
+                Latitude:{' '}
+                <input
+                  value={latitude}
+                  onChange={handleLatitudeChange}
+                  min='-90'
+                  max='90'
+                  size='15'
+                  type='number'
+                />
+              </label>
+            </div>
+            <div>
+              <label>
+                Longitude:{' '}
+                <input
+                  value={longitude}
+                  onChange={handleLongitudeChange}
+                  min='-180'
+                  max='180'
+                  size='15'
+                  type='number'
+                />
+              </label>
+            </div>
           </div>
-        </div>
-        <div className='weather-body'>
-          <div className='weather-icon'></div>
-          <div className='weather-details'>
-            <h2>{temperature || 0}°C</h2>
-            <p>{onlyDate}</p>
-            <p>{weatherText}</p>
+          <div className='weather-body'>
+            <div className='weather-icon'></div>
+            <div className='weather-details'>
+              <h2>{temperature || 0}°C</h2>
+              <p>{onlyDate}</p>
+              <p>{weatherText}</p>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 
