@@ -2,6 +2,14 @@
   "name": "weather-cra",
   "version": "0.1.0",
   "private": true,
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --transformIgnorePatterns 'node_modules/(?!my-library-dir)/'",
+    "eject": "react-scripts eject",
+    "format": "npx prettier --write .",
+    "lint": "eslint --ext js,jsx,ts,tsx src"
+  },
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
@@ -30,14 +38,10 @@
     ],
     "plugins": [
       "eslint-plugin-prettier"
-    ]
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --transformIgnorePatterns 'node_modules/(?!my-library-dir)/'",
-    "eject": "react-scripts eject",
-    "format": "npx prettier --write ."
+    ],
+    "rules": {
+      "no-unused-vars": 0
+    }
   },
   "browserslist": {
     "production": [
