@@ -1,7 +1,7 @@
 {
-  "editor.fontSize": 18,
+  "editor.fontSize": 16,
   "editor.tabSize": 2,
-  "editor.rulers": [80],
+  "editor.rulers": [100],
   "editor.formatOnSave": true,
   "terminal.integrated.persistentSessionReviveProcess": "never"
 }

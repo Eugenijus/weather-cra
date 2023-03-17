@@ -3,6 +3,7 @@ import axios from 'axios';
 
 import './Weather.css';
 import LocationMap from '../LocationMap/LocationMap';
+import Search from './Search';
 
 const API_URL = process.env.REACT_APP_MY_API_URL;
 console.log('API_URL: ', API_URL);
@@ -36,9 +37,7 @@ function Weather() {
       setStatus('loading');
       let response;
       try {
-        response = await axios.get(
-          API_URL + 'lat=' + latitude + '&lon=' + longitude
-        );
+        response = await axios.get(API_URL + 'lat=' + latitude + '&lon=' + longitude);
         setCurrentWeather(response.data);
         setStatus('idle');
       } catch (error) {
@@ -59,11 +58,17 @@ function Weather() {
     setLongitute(value);
   };
 
+  const handleSearchChange = (latitude, longitude) => {
+    setLatitude(latitude);
+    setLongitute(longitude);
+  };
+
   const { temperature = '', time = '', weatherText = '' } = currentWeather;
   const onlyDate = time.split('T')[0];
   return (
     <>
       {error && <div className='error'>{error}</div>}
+      <Search onSearchChange={handleSearchChange} />
       <div className='weather-app-container'>
         <div className='weather-app'>
           <div className='weather-header'>
