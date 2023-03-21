@@ -4,7 +4,7 @@ import AsyncSelect from 'react-select/async';
 const GEO_API_URL = process.env.REACT_APP_GEO_API_URL;
 const RAPID_API_KEY = process.env.REACT_APP_RAPID_API_KEY;
 const RAPID_API_HOST = process.env.REACT_APP_GEO_API_HOST;
-const minPopulation = 10000;
+const minPopulation = 5000;
 
 export const geoApiOptions = {
   method: 'GET',
@@ -45,6 +45,8 @@ const Search = ({ onSearchChange }) => {
               id: city.id,
               value: `${city.name}, ${city.region}, ${city.country}`,
               label: `${city.name}, ${city.region}, ${city.country}`,
+              name: city.name,
+              country: city.country,
               latitude: city.latitude,
               longitude: city.longitude,
             }));
@@ -66,7 +68,7 @@ const Search = ({ onSearchChange }) => {
     const { value } = option;
     const city = options.find((element) => element.value === value);
     setSelectedOption(city.value);
-    onSearchChange(city.latitude, city.longitude);
+    onSearchChange(city.latitude, city.longitude, `${city.name}, ${city.country}`);
   };
 
   return (

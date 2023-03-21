@@ -3,14 +3,15 @@ import axios from 'axios';
 
 import './Weather.css';
 import LocationMap from '../LocationMap/LocationMap';
+import { getPNGIconUrl } from './weatherCodes';
 import Search from './Search';
 
 const API_URL = process.env.REACT_APP_MY_API_URL;
-console.log('API_URL: ', API_URL);
 
 function Weather() {
   const [currentWeather, setCurrentWeather] = useState({});
   const [error, setError] = useState(null);
+  const [city, setCity] = useState('Weather App');
   const [latitude, setLatitude] = useState('');
   const [longitude, setLongitute] = useState('');
   const [status, setStatus] = useState('idle');
@@ -58,12 +59,13 @@ function Weather() {
     setLongitute(value);
   };
 
-  const handleSearchChange = (latitude, longitude) => {
+  const handleSearchChange = (latitude, longitude, city) => {
     setLatitude(latitude);
     setLongitute(longitude);
+    setCity(city);
   };
 
-  const { temperature = '', time = '', weatherText = '' } = currentWeather;
+  const { temperature = '', time = '', weatherText = '', weathercode = 45 } = currentWeather;
   const onlyDate = time.split('T')[0];
   return (
     <>
@@ -72,7 +74,7 @@ function Weather() {
       <div className='weather-app-container'>
         <div className='weather-app'>
           <div className='weather-header'>
-            <h1>Weather App</h1>
+            <h1>{city}</h1>
           </div>
           <div className='weather-input'>
             <div className='weather-input-wrapper'>
@@ -108,7 +110,7 @@ function Weather() {
           ) : (
             <div className='weather-body'>
               <div className='weather-icon'>
-                <img src='/logo192.png' alt='logo' />
+                <img src={getPNGIconUrl(weathercode)} alt='logo' />
               </div>
               <div className='weather-details'>
                 <h2>{temperature || 0}°C</h2>

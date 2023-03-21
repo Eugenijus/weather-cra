@@ -16,8 +16,8 @@
 
 .weather-app {
   min-width: 250px;
-  width: 300px;
-  height: 250px;
+  width: 350px;
+  height: 270px;
   background: white;
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
@@ -42,6 +42,10 @@
 
 .weather-input {
   height: 70px;
+}
+
+input[type='number'] {
+  width: 100px;
 }
 
 .weather-input-wrapper {

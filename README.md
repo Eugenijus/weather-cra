@@ -6,7 +6,7 @@ To test the app go to:
 
 - https://eugenijus-weather-app.netlify.app/
 
-![](assets/Weather-App-2023-03-17.png)
+![](assets/Weather-App-2023-03-21.png)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
