@@ -6,7 +6,7 @@ import LocationMap from '../LocationMap/LocationMap';
 import { getPNGIconUrl } from './weatherCodes';
 import Search from './Search';
 
-const API_URL = process.env.REACT_APP_MY_API_URL_LOCAL;
+const API_URL = process.env.REACT_APP_MY_API_URL;
 
 function Weather() {
   const [currentWeather, setCurrentWeather] = useState({});

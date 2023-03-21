@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import AsyncSelect from 'react-select/async';
 
-const API_URL = process.env.REACT_APP_MY_API_URL_LOCAL;
+const API_URL = process.env.REACT_APP_MY_API_URL;
 const minPopulation = 5000;
 
 let timer;
