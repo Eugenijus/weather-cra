@@ -1,18 +1,8 @@
 import { useState } from 'react';
 import AsyncSelect from 'react-select/async';
 
-const GEO_API_URL = process.env.REACT_APP_GEO_API_URL;
-const RAPID_API_KEY = process.env.REACT_APP_RAPID_API_KEY;
-const RAPID_API_HOST = process.env.REACT_APP_GEO_API_HOST;
+const API_URL = process.env.REACT_APP_MY_API_URL_LOCAL;
 const minPopulation = 5000;
-
-export const geoApiOptions = {
-  method: 'GET',
-  headers: {
-    'X-RapidAPI-Key': RAPID_API_KEY,
-    'X-RapidAPI-Host': RAPID_API_HOST,
-  },
-};
 
 let timer;
 function debounce(func, timeout = 1000) {
@@ -36,8 +26,7 @@ const Search = ({ onSearchChange }) => {
           if (!inputValue || inputValue.length === 0) return cities;
           try {
             const response = await fetch(
-              `${GEO_API_URL}/cities?minPopulation=${minPopulation}&namePrefix=${inputValue}`,
-              geoApiOptions
+              `${API_URL}/cities?minPopulation=${minPopulation}&namePrefix=${inputValue}`
             );
             const responseJSON = await response.json();
             const { data } = responseJSON;

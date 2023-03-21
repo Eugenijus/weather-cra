@@ -6,7 +6,7 @@ import LocationMap from '../LocationMap/LocationMap';
 import { getPNGIconUrl } from './weatherCodes';
 import Search from './Search';
 
-const API_URL = process.env.REACT_APP_MY_API_URL;
+const API_URL = process.env.REACT_APP_MY_API_URL_LOCAL;
 
 function Weather() {
   const [currentWeather, setCurrentWeather] = useState({});
@@ -38,7 +38,7 @@ function Weather() {
       setStatus('loading');
       let response;
       try {
-        response = await axios.get(API_URL + 'lat=' + latitude + '&lon=' + longitude);
+        response = await axios.get(`${API_URL}/weather?lat=${latitude}&lon=${longitude}`);
         setCurrentWeather(response.data);
         setStatus('idle');
       } catch (error) {
