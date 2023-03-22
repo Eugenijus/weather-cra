@@ -1,3 +1,9 @@
+.search {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .error {
   display: flex;
   justify-content: center;
@@ -8,10 +14,25 @@
   border-radius: 3px;
 }
 
+.two-columns {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 20px;
+}
+
 .weather-app-container {
   display: flex;
   justify-content: center;
   align-items: flex-start;
+}
+
+.history {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 10px;
+  gap: 5px;
 }
 
 .weather-app {
