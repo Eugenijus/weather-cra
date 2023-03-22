@@ -51,7 +51,7 @@ function Weather() {
       }
     };
     fetchWeather();
-  }, [latitude, longitude, locationNotProvided]);
+  }, [city, latitude, longitude, locationNotProvided]);
 
   const handleLatitudeChange = (event) => {
     const { value } = event.target;
