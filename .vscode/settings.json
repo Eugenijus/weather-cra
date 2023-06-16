@@ -3,5 +3,22 @@
   "editor.tabSize": 2,
   "editor.rulers": [100],
   "editor.formatOnSave": true,
-  "terminal.integrated.persistentSessionReviveProcess": "never"
+  "terminal.integrated.persistentSessionReviveProcess": "never",
+
+  // Build in replacement for "Bracket Pair Colorizer 2"
+  "editor.bracketPairColorization.enabled": true,
+  "editor.guides.bracketPairs": "active",
+
+  // "Jest Runner" extension settings
+  "jestrunner.codeLens": ["run", "debug", "watch"],
+  
+  // "ESLint" extension settgins
+  "eslint.validate": ["javascript", "typescript"],
+  
+  // Git Blame extension settings
+  "gitblame.commitUrl": "${tool.protocol}//github.com${gitorigin.path}${tool.commitpath}${hash}",
+  "gitblame.infoMessageFormat": "${commit.summary}",
+  "gitblame.inlineMessageFormat": "${author.name} (${time.ago}) • ${commit.summary} •",
+  "gitblame.inlineMessageEnabled": true,
+  "gitblame.inlineMessageMargin": 4
 }
